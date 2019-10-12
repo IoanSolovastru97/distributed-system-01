@@ -5,9 +5,6 @@ import com.example.springdemo.entities.User;
 
 public class UserBuilder {
 
-    public UserBuilder() {
-    }
-
     public static UserDTO generateDTOFromEntity(User user) {
         return new UserDTO(
                 user.getUsername(),
