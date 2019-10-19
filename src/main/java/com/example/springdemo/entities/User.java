@@ -6,6 +6,7 @@ import com.example.springdemo.entities.helper.Profile;
 import javax.persistence.*;
 
 @Entity
+@Inheritance(strategy = InheritanceType.JOINED)
 @Table(name = "user")
 public class User {
 
