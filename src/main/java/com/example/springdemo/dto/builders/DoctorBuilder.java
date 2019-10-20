@@ -10,7 +10,7 @@ public class DoctorBuilder {
                 doctor.getUsername(),
                 doctor.getPassword(), doctor.getName(),
                 doctor.getGender(), doctor.getBirthday(),
-                doctor.getAddress(), doctor.getProfile(),
+                doctor.getAddress(),
                 doctor.getPatients(),
                 doctor.getMedicalRecords());
     }
@@ -23,7 +23,6 @@ public class DoctorBuilder {
                 doctorDTO.getGender(),
                 doctorDTO.getBirthday(),
                 doctorDTO.getAddress(),
-                doctorDTO.getProfile(),
                 doctorDTO.getPatients(),
                 doctorDTO.getMedicalRecords());
     }

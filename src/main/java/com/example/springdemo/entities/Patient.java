@@ -15,16 +15,12 @@ public class Patient extends User {
     @OneToMany
     private List<MedicalRecord> medicalRecords;
 
-    public Patient(String username, String password, String name, Gender gender, String birthday, String address, Profile profile) {
-        super(username, password, name, gender, birthday, address, profile);
-    }
-
     public Patient(String username, String password, Profile profile) {
         super(username, password, profile);
     }
 
-    public Patient(String username, String password, String name, Gender gender, String birthday, String address, Profile profile, List<MedicalRecord> medicalRecords) {
-        super(username, password, name, gender, birthday, address, profile);
+    public Patient(String username, String password, String name, Gender gender, String birthday, String address, List<MedicalRecord> medicalRecords) {
+        super(username, password, name, gender, birthday, address, Profile.PATIENT);
         this.medicalRecords = medicalRecords;
     }
 

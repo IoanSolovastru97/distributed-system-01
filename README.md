@@ -7,3 +7,7 @@
 5. Run the application
 6. Check is the person table was created
 7. Change the line 26 from application.properties file located in /src/main/resources to allow table creation in the DB: spring.jpa.hibernate.ddl-auto = validate
+
+
+#Swagger
+- Swagger link: http://localhost:8080/swagger-ui.html#/

@@ -13,7 +13,6 @@ public class PatientBuilder {
                 patient.getGender(),
                 patient.getBirthday(),
                 patient.getAddress(),
-                patient.getProfile(),
                 patient.getMedicalRecords());
     }
 
@@ -25,7 +24,6 @@ public class PatientBuilder {
                 patientDTO.getGender(),
                 patientDTO.getBirthday(),
                 patientDTO.getAddress(),
-                patientDTO.getProfile(),
                 patientDTO.getMedicalRecords());
     }
 }

@@ -107,6 +107,7 @@ public class DoctorController {
 
     @PutMapping(value = "/medicalrecord")
     public MedicalRecordDTO createMedicalRecord(String doctorID, String patientID, List<Drug> drugs, List<IntakeInterval> intakeIntervals, String period) {
+        //TODO convert drugsDTO to drugs
         return doctorService.createMedicalRecord(doctorID, patientID, drugs, intakeIntervals, period);
     }
 }

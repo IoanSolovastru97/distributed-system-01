@@ -19,23 +19,11 @@ public class Doctor extends User {
     @OneToMany
     private List<MedicalRecord> medicalRecords;
 
-    public Doctor(String username, String password, String name, Gender gender, String birthday, String address, Profile profile) {
-        super(username, password, name, gender, birthday, address, profile);
-    }
-
-    public Doctor(String username, String password, Profile profile) {
-        super(username, password, profile);
-    }
-
-    public Doctor(List<Patient> patients) {
-        this.patients = patients;
-    }
-
     public Doctor() {
     }
 
-    public Doctor(String username, String password, String name, Gender gender, String birthday, String address, Profile profile, List<Patient> patients, List<MedicalRecord> medicalRecords) {
-        super(username, password, name, gender, birthday, address, profile);
+    public Doctor(String username, String password, String name, Gender gender, String birthday, String address, List<Patient> patients, List<MedicalRecord> medicalRecords) {
+        super(username, password, name, gender, birthday, address, Profile.DOCTOR);
         this.patients = patients;
         this.medicalRecords = medicalRecords;
     }

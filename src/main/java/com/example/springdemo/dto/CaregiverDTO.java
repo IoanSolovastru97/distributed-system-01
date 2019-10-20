@@ -10,8 +10,8 @@ public class CaregiverDTO extends UserDTO {
 
     private List<Patient> patients;
 
-    public CaregiverDTO(String username, String password, String name, Gender gender, String birthday, String address, Profile profile, List<Patient> patients) {
-        super(username, password, name, gender, birthday, address, profile);
+    public CaregiverDTO(String username, String password, String name, Gender gender, String birthday, String address, List<Patient> patients) {
+        super(username, password, name, gender, birthday, address, Profile.CAREGIVER);
         this.patients = patients;
     }
 

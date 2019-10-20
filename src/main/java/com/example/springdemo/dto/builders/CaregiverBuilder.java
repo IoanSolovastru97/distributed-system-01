@@ -10,7 +10,7 @@ public class CaregiverBuilder {
                 caregiver.getUsername(),
                 caregiver.getPassword(), caregiver.getName(),
                 caregiver.getGender(), caregiver.getBirthday(),
-                caregiver.getAddress(), caregiver.getProfile(),
+                caregiver.getAddress(),
                 caregiver.getPatientList());
     }
 
@@ -22,7 +22,6 @@ public class CaregiverBuilder {
                 caregiverDTO.getGender(),
                 caregiverDTO.getBirthday(),
                 caregiverDTO.getAddress(),
-                caregiverDTO.getProfile(),
                 caregiverDTO.getPatients());
     }
 }

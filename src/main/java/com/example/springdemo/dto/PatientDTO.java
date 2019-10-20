@@ -9,8 +9,8 @@ import java.util.List;
 public class PatientDTO extends UserDTO {
     private List<MedicalRecord> medicalRecords;
 
-    public PatientDTO(String username, String password, String name, Gender gender, String birthday, String address, Profile profile, List<MedicalRecord> medicalRecords) {
-        super(username, password, name, gender, birthday, address, profile);
+    public PatientDTO(String username, String password, String name, Gender gender, String birthday, String address, List<MedicalRecord> medicalRecords) {
+        super(username, password, name, gender, birthday, address, Profile.PATIENT);
         this.medicalRecords = medicalRecords;
     }
 
