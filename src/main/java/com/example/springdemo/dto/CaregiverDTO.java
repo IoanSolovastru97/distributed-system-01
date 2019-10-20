@@ -1,33 +1,25 @@
-//package com.example.springdemo.dto;
-//
-//import com.example.springdemo.entities.Patient;
-//import com.example.springdemo.entities.User;
-//
-//import java.util.List;
-//
-//public class CaregiverDTO {
-//
-//    private User user;
-//    private List<Patient> patients;
-//
-//    public CaregiverDTO(User user, List<Patient> patients) {
-//        this.user = user;
-//        this.patients = patients;
-//    }
-//
-//    public User getUsername() {
-//        return user;
-//    }
-//
-//    public void setUsername(User user) {
-//        this.user = user;
-//    }
-//
-//    public List<Patient> getPatients() {
-//        return patients;
-//    }
-//
-//    public void setPatients(List<Patient> patients) {
-//        this.patients = patients;
-//    }
-//}
+package com.example.springdemo.dto;
+
+import com.example.springdemo.entities.Patient;
+import com.example.springdemo.entities.helper.Gender;
+import com.example.springdemo.entities.helper.Profile;
+
+import java.util.List;
+
+public class CaregiverDTO extends UserDTO {
+
+    private List<Patient> patients;
+
+    public CaregiverDTO(String username, String password, String name, Gender gender, String birthday, String address, List<Patient> patients) {
+        super(username, password, name, gender, birthday, address, Profile.CAREGIVER);
+        this.patients = patients;
+    }
+
+    public List<Patient> getPatients() {
+        return patients;
+    }
+
+    public void setPatients(List<Patient> patients) {
+        this.patients = patients;
+    }
+}
