@@ -1,32 +1,18 @@
-package com.example.springdemo.entities;
+package com.example.springdemo.dto;
 
-import javax.persistence.*;
+import com.example.springdemo.entities.DrugSideEffect;
 
-@Entity
-@Table(name = "drug")
-public class Drug {
+public class DrugDTO {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id")
     private Integer id;
-
-    @Column(name = "name")
     private String name;
-
-    @Column(name = "description")
     private String description;
-
-    @OneToOne
     private DrugSideEffect drugSideEffect;
 
-    public Drug(String name, String description, DrugSideEffect drugSideEffect) {
+    public DrugDTO(String name, String description, DrugSideEffect drugSideEffect) {
         this.name = name;
         this.description = description;
         this.drugSideEffect = drugSideEffect;
-    }
-
-    public Drug() {
     }
 
     public Integer getId() {

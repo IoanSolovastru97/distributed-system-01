@@ -23,6 +23,11 @@ public class Patient extends User {
         super(username, password, profile);
     }
 
+    public Patient(String username, String password, String name, Gender gender, String birthday, String address, Profile profile, List<MedicalRecord> medicalRecords) {
+        super(username, password, name, gender, birthday, address, profile);
+        this.medicalRecords = medicalRecords;
+    }
+
     public Patient() {
     }
 

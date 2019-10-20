@@ -34,6 +34,12 @@ public class Doctor extends User {
     public Doctor() {
     }
 
+    public Doctor(String username, String password, String name, Gender gender, String birthday, String address, Profile profile, List<Patient> patients, List<MedicalRecord> medicalRecords) {
+        super(username, password, name, gender, birthday, address, profile);
+        this.patients = patients;
+        this.medicalRecords = medicalRecords;
+    }
+
     public List<Patient> getPatients() {
         return patients;
     }
