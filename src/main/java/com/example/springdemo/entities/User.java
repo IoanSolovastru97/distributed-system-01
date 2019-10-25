@@ -1,9 +1,10 @@
 package com.example.springdemo.entities;
 
 import com.example.springdemo.entities.helper.Gender;
-import com.example.springdemo.entities.helper.Profile;
+import com.example.springdemo.entities.helper.Role;
 
 import javax.persistence.*;
+import javax.validation.constraints.Pattern;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
@@ -11,6 +12,7 @@ import javax.persistence.*;
 public class User {
 
     @Id
+    @Pattern(regexp = "\\S+@\\S+\\.\\S+")
     @Column(name = "username", unique = true, nullable = false)
     private String username;
 
@@ -30,26 +32,26 @@ public class User {
     @Column(name = "address")
     private String address;
 
-    @Column(name = "profile")
+    @Column(name = "role")
     @Enumerated(EnumType.STRING)
-    private Profile profile;
+    private Role role;
 
     /*
     @OneToMany(mappedBy= "")
     List<Item> items;
      */
 
-    public User(String username, String password, String name, Gender gender, String birthday, String address, Profile profile) {
+    public User(String username, String password, String name, Gender gender, String birthday, String address, Role role) {
         this.username = username;
         this.password = password;
         this.name = name;
         this.gender = gender;
         this.birthday = birthday;
         this.address = address;
-        this.profile = profile;
+        this.role = role;
     }
 
-    public User(String username, String password, Profile profile) {
+    public User(String username, String password, Role role) {
 
     }
 
@@ -104,11 +106,11 @@ public class User {
         this.address = address;
     }
 
-    public Profile getProfile() {
-        return profile;
+    public Role getRole() {
+        return role;
     }
 
-    public void setProfile(Profile profile) {
-        this.profile = profile;
+    public void setRole(Role role) {
+        this.role = role;
     }
 }

@@ -11,11 +11,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
 @CrossOrigin
-@RequestMapping(value = "/doctor")
+@RequestMapping(value = "/healthcare/doctor")
 public class DoctorController {
 
     @Autowired
@@ -33,7 +34,7 @@ public class DoctorController {
     }
 
     @PostMapping(value = "/patient")
-    public String insertPatient(@RequestBody PatientDTO patientDTO) {
+    public String insertPatient(@Valid @RequestBody PatientDTO patientDTO) {
         return doctorService.insertPatient(patientDTO);
     }
 
@@ -59,7 +60,7 @@ public class DoctorController {
     }
 
     @PostMapping(value = "/caregiver")
-    public String insertCaregiver(@RequestBody CaregiverDTO caregiverDTO) {
+    public String insertCaregiver(@Valid @RequestBody CaregiverDTO caregiverDTO) {
         return doctorService.insertCaregiver(caregiverDTO);
     }
 

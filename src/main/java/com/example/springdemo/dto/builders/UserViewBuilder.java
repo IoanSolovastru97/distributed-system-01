@@ -8,13 +8,13 @@ public class UserViewBuilder {
         return new UserViewDTO(
                 user.getUsername(),
                 user.getPassword(),
-                user.getProfile());
+                user.getRole());
     }
 
     public static User generateEntityFromDTO(UserViewDTO userViewDTO) {
         return new User(
                 userViewDTO.getUsername(),
                 userViewDTO.getPassword(),
-                userViewDTO.getProfile());
+                userViewDTO.getRole());
     }
 }

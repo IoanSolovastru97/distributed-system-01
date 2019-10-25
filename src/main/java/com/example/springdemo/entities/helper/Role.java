@@ -1,6 +1,6 @@
 package com.example.springdemo.entities.helper;
 
-public enum Profile {
+public enum Role {
     DOCTOR,
     PATIENT,
     CAREGIVER

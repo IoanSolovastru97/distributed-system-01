@@ -4,7 +4,7 @@ import com.example.springdemo.SpringDemoApplicationTests;
 import com.example.springdemo.dto.UserDTO;
 import com.example.springdemo.dto.UserViewDTO;
 import com.example.springdemo.entities.helper.Gender;
-import com.example.springdemo.entities.helper.Profile;
+import com.example.springdemo.entities.helper.Role;
 import com.example.springdemo.errorhandler.IncorrectParameterException;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +30,7 @@ public class UserServiceTest extends SpringDemoApplicationTests {
         userDTO.setPassword("asd");
         userDTO.setGender(Gender.MALE);
         userDTO.setBirthday("30/05/2019");
-        userDTO.setProfile(Profile.DOCTOR);
+        userDTO.setRole(Role.DOCTOR);
         String id = userService.insert(userDTO);
         UserViewDTO user2 = userService.findUserById(id);
         assert(!userDTO.equals(user2));
