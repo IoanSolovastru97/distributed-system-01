@@ -54,10 +54,5 @@ public class CaregiverController {
         return caregiverService.insertPatient(patientId, caregiverId);
     }
 
-    //User
-//    @GetMapping(value = "/{username}/details")
-//    public UserViewDTO getCaregiverDetails(String id) {
-//        return userService.findUserById(id);
-//    }
 
 }

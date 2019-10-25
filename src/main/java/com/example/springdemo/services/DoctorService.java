@@ -1,18 +1,14 @@
 package com.example.springdemo.services;
 
-import com.example.springdemo.dto.CaregiverDTO;
-import com.example.springdemo.dto.DrugDTO;
-import com.example.springdemo.dto.MedicalRecordDTO;
-import com.example.springdemo.dto.PatientDTO;
-import com.example.springdemo.dto.builders.CaregiverBuilder;
-import com.example.springdemo.dto.builders.DrugBuilder;
-import com.example.springdemo.dto.builders.MedicalRecordBuilder;
-import com.example.springdemo.dto.builders.PatientBuilder;
+import com.example.springdemo.dto.*;
+import com.example.springdemo.dto.builders.*;
 import com.example.springdemo.entities.*;
 import com.example.springdemo.errorhandler.ResourceNotFoundException;
 import com.example.springdemo.repositories.*;
 import com.example.springdemo.validators.UserFieldValidator;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -87,7 +83,7 @@ public class DoctorService {
     }
 
     public List<CaregiverDTO> findAllCaregivers() {
-        List<Caregiver> caregivers = caregiverRepository.getAllOrdered();
+        List<Caregiver> caregivers = caregiverRepository.findAll();
 
         return caregivers.stream()
                 .map(CaregiverBuilder::generateDTOFromEntity)
@@ -183,4 +179,52 @@ public class DoctorService {
                 collect(Collectors.toList());
     }
 
+    //Helper
+    private String getPassword(String password) {
+        PasswordEncoder encoder = new BCryptPasswordEncoder();
+        return encoder.encode(password);
+    }
+
+    //Doctor CRUD
+    public DoctorDTO findById(String id) {
+        Optional<Doctor> doctor = doctorRepository.findById(id);
+
+        if (!doctor.isPresent()) {
+            throw new ResourceNotFoundException("Doctor", "doctor id", id);
+        }
+        return DoctorBuilder.generateDTOFromEntity(doctor.get());
+    }
+
+    public List<DoctorDTO> findAll() {
+        List<Doctor> doctors = doctorRepository.findAll();
+
+        return doctors.stream()
+                .map(DoctorBuilder::generateDTOFromEntity)
+                .collect(Collectors.toList());
+    }
+
+    public String insert(DoctorDTO doctorDTO) {
+        doctorDTO.setPassword(getPassword(doctorDTO.getPassword()));
+        return doctorRepository
+                .save(DoctorBuilder.generateEntityFromDTO(doctorDTO))
+                .getUsername();
+    }
+
+    public String update(DoctorDTO doctorDTO) {
+        Optional<Doctor> doctor = doctorRepository.findById(doctorDTO.getUsername());
+
+        if (!doctor.isPresent()) {
+            throw new ResourceNotFoundException("Doctor", "doctor id", doctorDTO.getUsername());
+        }
+        return doctorRepository.save(DoctorBuilder.generateEntityFromDTO(doctorDTO)).getUsername();
+    }
+
+    public void delete(DoctorDTO doctorDTO) {
+        Optional<Doctor> doctor = doctorRepository.findById(doctorDTO.getUsername());
+
+        if (!doctor.isPresent()) {
+            throw new ResourceNotFoundException("Doctor", "doctor id", doctorDTO.getUsername());
+        }
+        doctorRepository.deleteById(DoctorBuilder.generateEntityFromDTO(doctorDTO).getUsername());
+    }
 }

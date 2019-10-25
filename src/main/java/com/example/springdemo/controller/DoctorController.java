@@ -1,14 +1,10 @@
 package com.example.springdemo.controller;
 
-import com.example.springdemo.dto.CaregiverDTO;
-import com.example.springdemo.dto.DrugDTO;
-import com.example.springdemo.dto.MedicalRecordDTO;
-import com.example.springdemo.dto.PatientDTO;
+import com.example.springdemo.dto.*;
 import com.example.springdemo.entities.Drug;
 import com.example.springdemo.entities.IntakeInterval;
 import com.example.springdemo.services.DoctorService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -21,6 +17,32 @@ public class DoctorController {
 
     @Autowired
     private DoctorService doctorService;
+
+    //Doctor
+    @GetMapping(value = "/{username}")
+    public DoctorDTO findById(@PathVariable("username") String username) {
+        return doctorService.findById(username);
+    }
+
+    @GetMapping
+    public List<DoctorDTO> findAll() {
+        return doctorService.findAll();
+    }
+
+    @PostMapping()
+    public String insert(@RequestBody DoctorDTO doctorDTO) {
+        return doctorService.insert(doctorDTO);
+    }
+
+    @PutMapping()
+    public String update(@RequestBody DoctorDTO doctorDTO) {
+        return doctorService.update(doctorDTO);
+    }
+
+    @DeleteMapping()
+    public void delete(@RequestBody DoctorDTO doctorDTO) {
+        doctorService.delete(doctorDTO);
+    }
 
     //Patient
     @GetMapping(value = "/patient/{username}")
@@ -111,4 +133,5 @@ public class DoctorController {
         //TODO convert drugsDTO to drugs
         return doctorService.createMedicalRecord(doctorID, patientID, drugs, intakeIntervals, period);
     }
+
 }
