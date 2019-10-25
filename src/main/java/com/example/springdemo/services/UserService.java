@@ -9,6 +9,8 @@ import com.example.springdemo.errorhandler.ResourceNotFoundException;
 import com.example.springdemo.repositories.UserRepository;
 import com.example.springdemo.validators.UserFieldValidator;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -41,7 +43,7 @@ public class UserService {
     public String insert(UserDTO userDTO) {
 
         UserFieldValidator.validateInsertOrUpdate(userDTO);
-
+        userDTO.setPassword(getPassword(userDTO.getPassword()));
         return userRepository
                 .save(UserBuilder.generateEntityFromDTO(userDTO))
                 .getUsername();
@@ -62,5 +64,8 @@ public class UserService {
     public void delete(UserViewDTO userViewDTO) {
         this.userRepository.deleteById(userViewDTO.getUsername());
     }
-
+    private String getPassword(String password) {
+        PasswordEncoder encoder = new BCryptPasswordEncoder();
+        return encoder.encode(password);
+    }
 }

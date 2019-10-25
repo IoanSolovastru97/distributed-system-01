@@ -1,7 +1,7 @@
 package com.example.springdemo.dto;
 
 import com.example.springdemo.entities.helper.Gender;
-import com.example.springdemo.entities.helper.Profile;
+import com.example.springdemo.entities.helper.Role;
 
 public class UserDTO {
 
@@ -11,16 +11,16 @@ public class UserDTO {
     private Gender gender;
     private String birthday;
     private String address;
-    private Profile profile;
+    private Role role;
 
-    public UserDTO(String username, String password, String name, Gender gender, String birthday, String address, Profile profile) {
+    public UserDTO(String username, String password, String name, Gender gender, String birthday, String address, Role role) {
         this.username = username;
         this.password = password;
         this.name = name;
         this.gender = gender;
         this.birthday = birthday;
         this.address = address;
-        this.profile = profile;
+        this.role = role;
     }
 
     public UserDTO() {
@@ -84,11 +84,11 @@ public class UserDTO {
         return super.equals(obj);
     }
 
-    public Profile getProfile() {
-        return profile;
+    public Role getRole() {
+        return role;
     }
 
-    public void setProfile(Profile profile) {
-        this.profile = profile;
+    public void setRole(Role role) {
+        this.role = role;
     }
 }

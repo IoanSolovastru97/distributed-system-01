@@ -1,25 +1,48 @@
 package com.example.springdemo.controller;
 
-import com.example.springdemo.dto.CaregiverDTO;
-import com.example.springdemo.dto.DrugDTO;
-import com.example.springdemo.dto.MedicalRecordDTO;
-import com.example.springdemo.dto.PatientDTO;
+import com.example.springdemo.dto.*;
 import com.example.springdemo.entities.Drug;
 import com.example.springdemo.entities.IntakeInterval;
 import com.example.springdemo.services.DoctorService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
 @CrossOrigin
-@RequestMapping(value = "/doctor")
+@RequestMapping(value = "/healthcare/doctor")
 public class DoctorController {
 
     @Autowired
     private DoctorService doctorService;
+
+    //Doctor
+    @GetMapping(value = "/{username}")
+    public DoctorDTO findById(@PathVariable("username") String username) {
+        return doctorService.findById(username);
+    }
+
+    @GetMapping
+    public List<DoctorDTO> findAll() {
+        return doctorService.findAll();
+    }
+
+    @PostMapping()
+    public String insert(@RequestBody DoctorDTO doctorDTO) {
+        return doctorService.insert(doctorDTO);
+    }
+
+    @PutMapping()
+    public String update(@RequestBody DoctorDTO doctorDTO) {
+        return doctorService.update(doctorDTO);
+    }
+
+    @DeleteMapping()
+    public void delete(@RequestBody DoctorDTO doctorDTO) {
+        doctorService.delete(doctorDTO);
+    }
 
     //Patient
     @GetMapping(value = "/patient/{username}")
@@ -33,7 +56,7 @@ public class DoctorController {
     }
 
     @PostMapping(value = "/patient")
-    public String insertPatient(@RequestBody PatientDTO patientDTO) {
+    public String insertPatient(@Valid @RequestBody PatientDTO patientDTO) {
         return doctorService.insertPatient(patientDTO);
     }
 
@@ -59,7 +82,7 @@ public class DoctorController {
     }
 
     @PostMapping(value = "/caregiver")
-    public String insertCaregiver(@RequestBody CaregiverDTO caregiverDTO) {
+    public String insertCaregiver(@Valid @RequestBody CaregiverDTO caregiverDTO) {
         return doctorService.insertCaregiver(caregiverDTO);
     }
 
@@ -110,4 +133,5 @@ public class DoctorController {
         //TODO convert drugsDTO to drugs
         return doctorService.createMedicalRecord(doctorID, patientID, drugs, intakeIntervals, period);
     }
+
 }

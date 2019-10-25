@@ -2,7 +2,6 @@ package com.example.springdemo.controller;
 
 import com.example.springdemo.dto.CaregiverDTO;
 import com.example.springdemo.dto.PatientDTO;
-import com.example.springdemo.dto.builders.PatientBuilder;
 import com.example.springdemo.services.CaregiverService;
 import com.example.springdemo.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +11,7 @@ import java.util.List;
 
 @RestController
 @CrossOrigin
-@RequestMapping(value = "/caregiver")
+@RequestMapping(value = "/healthcare/caregiver")
 public class CaregiverController {
 
     @Autowired
@@ -47,13 +46,13 @@ public class CaregiverController {
 
     @GetMapping(value = "/{username}/getPatient")
     public List<PatientDTO> getPatients(@PathVariable("username") String username) {
-       return caregiverService.findAllPatients(username);
+        return caregiverService.findAllPatients(username);
     }
 
-    //User
-//    @GetMapping(value = "/{username}/details")
-//    public UserViewDTO getCaregiverDetails(String id) {
-//        return userService.findUserById(id);
-//    }
+    @PutMapping(value = "/{caregiverId}")
+    public String insertPatient(String patientId, @PathVariable("caregiverId") String caregiverId) {
+        return caregiverService.insertPatient(patientId, caregiverId);
+    }
+
 
 }

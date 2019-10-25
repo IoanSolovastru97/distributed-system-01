@@ -10,7 +10,7 @@ import java.util.List;
 
 @RestController
 @CrossOrigin
-@RequestMapping(value = "/patient")
+@RequestMapping(value = "/healthcare/patient")
 public class PatientController {
 
     @Autowired
@@ -27,12 +27,13 @@ public class PatientController {
     }
 
     @PostMapping()
-    public String insertUserDTO(@RequestBody PatientDTO userDTO) {
+    public String insert(@RequestBody PatientDTO userDTO) {
         return patientService.insert(userDTO);
     }
 
-    @PutMapping()
-    public String updateUser(@RequestBody PatientDTO userDTO) {
+    @PutMapping(value = "/{username}")
+    public String update(@RequestBody PatientDTO userDTO) {
+
         return patientService.update(userDTO);
     }
 

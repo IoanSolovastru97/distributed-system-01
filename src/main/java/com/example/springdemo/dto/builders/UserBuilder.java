@@ -13,7 +13,7 @@ public class UserBuilder {
                 user.getGender(),
                 user.getBirthday(),
                 user.getAddress(),
-                user.getProfile());
+                user.getRole());
     }
 
     public static User generateEntityFromDTO(UserDTO userDTO) {
@@ -24,6 +24,6 @@ public class UserBuilder {
                 userDTO.getGender(),
                 userDTO.getBirthday(),
                 userDTO.getAddress(),
-                userDTO.getProfile());
+                userDTO.getRole());
     }
 }

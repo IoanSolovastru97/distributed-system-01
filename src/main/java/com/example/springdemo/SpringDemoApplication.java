@@ -9,7 +9,6 @@ import java.util.TimeZone;
 public class SpringDemoApplication {
 
 	public static void main(String[] args) {
-
 		TimeZone.setDefault(TimeZone.getTimeZone("UTC"));
 		SpringApplication.run(SpringDemoApplication.class, args);
 	}

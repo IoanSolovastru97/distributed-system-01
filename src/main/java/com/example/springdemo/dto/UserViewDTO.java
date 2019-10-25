@@ -1,16 +1,16 @@
 package com.example.springdemo.dto;
 
-import com.example.springdemo.entities.helper.Profile;
+import com.example.springdemo.entities.helper.Role;
 
 public class UserViewDTO {
     private String username;
     private String password;
-    private Profile profile;
+    private Role role;
 
-    public UserViewDTO(String username, String password, Profile profile) {
+    public UserViewDTO(String username, String password, Role role) {
         this.password = password;
         this.username = username;
-        this.profile = profile;
+        this.role = role;
     }
 
     public String getUsername() {
@@ -29,11 +29,11 @@ public class UserViewDTO {
         this.password = password;
     }
 
-    public Profile getProfile() {
-        return profile;
+    public Role getRole() {
+        return role;
     }
 
-    public void setProfile(Profile profile) {
-        this.profile = profile;
+    public void setRole(Role role) {
+        this.role = role;
     }
 }

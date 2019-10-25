@@ -1,7 +1,7 @@
 package com.example.springdemo.entities;
 
 import com.example.springdemo.entities.helper.Gender;
-import com.example.springdemo.entities.helper.Profile;
+import com.example.springdemo.entities.helper.Role;
 
 import javax.persistence.*;
 import java.util.List;
@@ -15,12 +15,12 @@ public class Patient extends User {
     @OneToMany
     private List<MedicalRecord> medicalRecords;
 
-    public Patient(String username, String password, Profile profile) {
-        super(username, password, profile);
+    public Patient(String username, String password, Role role) {
+        super(username, password, role);
     }
 
     public Patient(String username, String password, String name, Gender gender, String birthday, String address, List<MedicalRecord> medicalRecords) {
-        super(username, password, name, gender, birthday, address, Profile.PATIENT);
+        super(username, password, name, gender, birthday, address, Role.PATIENT);
         this.medicalRecords = medicalRecords;
     }
 
