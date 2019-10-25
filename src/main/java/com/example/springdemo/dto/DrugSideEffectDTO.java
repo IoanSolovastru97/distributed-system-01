@@ -1,5 +1,7 @@
 package com.example.springdemo.dto;
 
+import com.example.springdemo.entities.DrugSideEffect;
+
 public class DrugSideEffectDTO {
 
     private Integer id;

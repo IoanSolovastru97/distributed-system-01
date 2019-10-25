@@ -14,6 +14,8 @@ public class DrugSideEffect {
     @Column(name = "description")
     private String description;
 
+    public DrugSideEffect(){}
+    
     public DrugSideEffect(String description) {
         this.description = description;
     }

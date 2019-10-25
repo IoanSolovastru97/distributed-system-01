@@ -9,8 +9,8 @@ import java.util.List;
 
 @Repository
 public interface IntakeIntervalRepository extends JpaRepository<IntakeInterval, Integer> {
-    @Query(value = "SELECT u " +
-            "FROM intake_interval u " +
-            "ORDER BY u.start_interval")
+    @Query(
+            value = "SELECT * FROM intake_interval ORDER BY start_interval",
+            nativeQuery = true)
     List<IntakeInterval> getAllOrdered();
 }

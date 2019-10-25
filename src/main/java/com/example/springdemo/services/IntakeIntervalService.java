@@ -6,6 +6,7 @@ import com.example.springdemo.entities.IntakeInterval;
 import com.example.springdemo.errorhandler.ResourceNotFoundException;
 import com.example.springdemo.repositories.IntakeIntervalRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
