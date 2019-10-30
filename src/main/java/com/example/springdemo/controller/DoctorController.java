@@ -65,9 +65,9 @@ public class DoctorController {
         return doctorService.updatePatient(patientDTO);
     }
 
-    @DeleteMapping(value = "/patient")
-    public void deletePatient(@RequestBody PatientDTO patientDTO) {
-        doctorService.deletePatient(patientDTO);
+    @DeleteMapping(value = "/patient/{username}")
+    public void deletePatient(@PathVariable("username") String username) {
+        doctorService.deletePatient(username);
     }
 
     //Caregiver
@@ -91,9 +91,9 @@ public class DoctorController {
         return doctorService.updateCaregiver(caregiverDTO);
     }
 
-    @DeleteMapping(value = "/caregiver")
-    public void deleteCaregiver(@RequestBody CaregiverDTO patientDTO) {
-        doctorService.deleteCaregiver(patientDTO);
+    @DeleteMapping(value = "/caregiver/{username}")
+    public void deleteCaregiver(@PathVariable("username") String username) {
+        doctorService.deleteCaregiver(username);
     }
 
     //Drugs
@@ -123,15 +123,19 @@ public class DoctorController {
     }
 
     //Medical Record
-    @GetMapping(value = "/medicalrecord")
-    public List<MedicalRecordDTO> getMedicalRecords(String username) {
+    @GetMapping(value = "/medicalrecord/{username}")
+    public List<MedicalRecordDTO> getMedicalRecords(@PathVariable("username") String username) {
         return doctorService.getMedicalRecords(username);
     }
 
-    @PutMapping(value = "/medicalrecord")
-    public MedicalRecordDTO createMedicalRecord(String doctorID, String patientID, List<Drug> drugs, List<IntakeInterval> intakeIntervals, String period) {
-        //TODO convert drugsDTO to drugs
-        return doctorService.createMedicalRecord(doctorID, patientID, drugs, intakeIntervals, period);
+    @GetMapping(value = "/medicalrecord")
+    public List<MedicalRecordDTO> getAllMedicalRecords() {
+        return doctorService.getAllMedicalRecords();
+    }
+
+    @PostMapping(value = "/medicalrecord")
+    public Integer insertMedicalRecord(@RequestBody MedicalRecordDTO medicalRecordDTO){
+        return doctorService.insertMedicalRecord(medicalRecordDTO);
     }
 
 }

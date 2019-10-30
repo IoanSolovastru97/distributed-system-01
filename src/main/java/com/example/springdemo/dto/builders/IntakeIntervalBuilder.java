@@ -16,4 +16,18 @@ public class IntakeIntervalBuilder {
                 intakeIntervalDTO.getStartInterval(),
                 intakeIntervalDTO.getEndInterval());
     }
+
+    public static IntakeIntervalDTO generateDTOFromEntityWithId(IntakeInterval intakeInterval) {
+        return new IntakeIntervalDTO(
+                intakeInterval.getId(),
+                intakeInterval.getStartInterval(),
+                intakeInterval.getEndInterval());
+    }
+
+    public static IntakeInterval generateEntityFromDTOWithId(IntakeIntervalDTO intakeIntervalDTO) {
+        return new IntakeInterval(
+                intakeIntervalDTO.getId(),
+                intakeIntervalDTO.getStartInterval(),
+                intakeIntervalDTO.getEndInterval());
+    }
 }

@@ -24,14 +24,14 @@ public class DrugService {
         if (!drug.isPresent()) {
             throw new ResourceNotFoundException("Intake interval", "drug id", id);
         }
-        return DrugBuilder.generateDTOFromEntity(drug.get());
+        return DrugBuilder.generateDTOFromEntityWithId(drug.get());
     }
 
     public List<DrugDTO> findAll() {
         List<Drug> drugs = drugRepository.getAllOrdered();
 
         return drugs.stream()
-                .map(DrugBuilder::generateDTOFromEntity)
+                .map(DrugBuilder::generateDTOFromEntityWithId)
                 .collect(Collectors.toList());
     }
 

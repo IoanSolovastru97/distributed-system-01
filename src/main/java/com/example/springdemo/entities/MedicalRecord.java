@@ -1,6 +1,7 @@
 package com.example.springdemo.entities;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -10,7 +11,7 @@ public class MedicalRecord {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
-    private Integer id;
+    private Integer id ;
 
     @ManyToOne
     private Patient patient;
@@ -35,6 +36,20 @@ public class MedicalRecord {
         this.drugs = drugs;
         this.period = period;
         this.intakeIntervals = intakeIntervals;
+    }
+
+    public MedicalRecord(Integer id, Patient patient, Doctor doctor, String period, List<Drug> drugs, List<IntakeInterval> intakeIntervals) {
+        this.id = id;
+        this.patient = patient;
+        this.doctor = doctor;
+        this.period = period;
+        this.drugs = drugs;
+        this.intakeIntervals = intakeIntervals;
+    }
+
+    public MedicalRecord() {
+        drugs = new ArrayList<>();
+        intakeIntervals = new ArrayList<>();
     }
 
     public Integer getId() {

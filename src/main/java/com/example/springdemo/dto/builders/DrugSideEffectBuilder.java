@@ -13,4 +13,16 @@ public class DrugSideEffectBuilder {
     public static DrugSideEffect generateEntityFromDTO(DrugSideEffectDTO drugSideEffectDTO) {
         return new DrugSideEffect(drugSideEffectDTO.getDescription());
     }
+
+    public static DrugSideEffectDTO generateDTOFromEntityWithId(DrugSideEffect drugSideEffect) {
+        return new DrugSideEffectDTO(
+                drugSideEffect.getId(),
+                drugSideEffect.getDescription());
+    }
+
+    public static DrugSideEffect generateEntityFromDTOWithId(DrugSideEffectDTO drugSideEffectDTO) {
+        return new DrugSideEffect(
+                drugSideEffectDTO.getId(),
+                drugSideEffectDTO.getDescription());
+    }
 }

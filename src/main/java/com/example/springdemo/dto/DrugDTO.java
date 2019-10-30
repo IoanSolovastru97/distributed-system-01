@@ -15,6 +15,13 @@ public class DrugDTO {
         this.drugSideEffect = drugSideEffect;
     }
 
+    public DrugDTO(Integer id, String name, String description, DrugSideEffect drugSideEffect) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.drugSideEffect = drugSideEffect;
+    }
+
     public Integer getId() {
         return id;
     }

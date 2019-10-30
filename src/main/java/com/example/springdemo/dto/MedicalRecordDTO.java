@@ -1,8 +1,6 @@
 package com.example.springdemo.dto;
 
 import com.example.springdemo.entities.Doctor;
-import com.example.springdemo.entities.Drug;
-import com.example.springdemo.entities.IntakeInterval;
 import com.example.springdemo.entities.Patient;
 
 import java.util.List;
@@ -13,15 +11,27 @@ public class MedicalRecordDTO {
     private Patient patient;
     private Doctor doctor;
     private String period;
-    private List<Drug> drugs;
-    private List<IntakeInterval> intakeIntervals;
+    private List<DrugDTO> drugs;
+    private List<IntakeIntervalDTO> intakeIntervals;
 
-    public MedicalRecordDTO(Patient patient, Doctor doctor, String period, List<Drug> drugs, List<IntakeInterval> intakeIntervals) {
+    public MedicalRecordDTO(Patient patient, Doctor doctor, String period, List<DrugDTO> drugs, List<IntakeIntervalDTO> intakeIntervals) {
         this.patient = patient;
         this.doctor = doctor;
         this.period = period;
         this.drugs = drugs;
         this.intakeIntervals = intakeIntervals;
+    }
+
+    public MedicalRecordDTO(Integer id, Patient patient, Doctor doctor, String period, List<DrugDTO> drugs, List<IntakeIntervalDTO> intakeIntervals) {
+        this.id = id;
+        this.patient = patient;
+        this.doctor = doctor;
+        this.period = period;
+        this.drugs = drugs;
+        this.intakeIntervals = intakeIntervals;
+    }
+
+    public MedicalRecordDTO() {
     }
 
     public Integer getId() {
@@ -56,19 +66,19 @@ public class MedicalRecordDTO {
         this.period = period;
     }
 
-    public List<Drug> getDrugs() {
+    public List<DrugDTO> getDrugDTOs() {
         return drugs;
     }
 
-    public void setDrugs(List<Drug> drugs) {
+    public void setDrugDTOs(List<DrugDTO> drugs) {
         this.drugs = drugs;
     }
 
-    public List<IntakeInterval> getIntakeIntervals() {
+    public List<IntakeIntervalDTO> getIntakeIntervalDTOs() {
         return intakeIntervals;
     }
 
-    public void setIntakeIntervals(List<IntakeInterval> intakeIntervals) {
+    public void setIntakeIntervalDTOs(List<IntakeIntervalDTO> intakeIntervals) {
         this.intakeIntervals = intakeIntervals;
     }
 }

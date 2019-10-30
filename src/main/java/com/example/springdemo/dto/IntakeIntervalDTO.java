@@ -11,6 +11,12 @@ public class IntakeIntervalDTO {
         this.endInterval = endInterval;
     }
 
+    public IntakeIntervalDTO(Integer id, String startInterval, String endInterval) {
+        this.id = id;
+        this.startInterval = startInterval;
+        this.endInterval = endInterval;
+    }
+
     public Integer getId() {
         return id;
     }

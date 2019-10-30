@@ -48,8 +48,8 @@ public class DoctorService {
     }
 
     public String insertPatient(PatientDTO patientDTO) {
-
         UserFieldValidator.validateInsertOrUpdate(patientDTO);
+        patientDTO.setPassword(getPassword(patientDTO.getPassword()));
 
         return patientRepository
                 .save(PatientBuilder.generateEntityFromDTO(patientDTO))
@@ -68,8 +68,8 @@ public class DoctorService {
         return patientRepository.save(PatientBuilder.generateEntityFromDTO(patientDTO)).getUsername();
     }
 
-    public void deletePatient(PatientDTO patientDTO) {
-        this.patientRepository.deleteById(patientDTO.getUsername());
+    public void deletePatient(String username) {
+        this.patientRepository.deleteById(username);
     }
 
     ///Caregiver CRUD
@@ -93,7 +93,7 @@ public class DoctorService {
     public String insertCaregiver(CaregiverDTO caregiverDTO) {
 
         UserFieldValidator.validateInsertOrUpdate(caregiverDTO);
-
+        caregiverDTO.setPassword(getPassword(caregiverDTO.getPassword()));
         return caregiverRepository
                 .save(CaregiverBuilder.generateEntityFromDTO(caregiverDTO))
                 .getUsername();
@@ -111,8 +111,8 @@ public class DoctorService {
         return caregiverRepository.save(CaregiverBuilder.generateEntityFromDTO(caregiverDTO)).getUsername();
     }
 
-    public void deleteCaregiver(CaregiverDTO caregiverViewDTO) {
-        this.caregiverRepository.deleteById(caregiverViewDTO.getUsername());
+    public void deleteCaregiver(String username) {
+        this.caregiverRepository.deleteById(username);
     }
 
     //Drug CRUD
@@ -122,14 +122,14 @@ public class DoctorService {
         if (!user.isPresent()) {
             throw new ResourceNotFoundException("Drug", "drug id", id);
         }
-        return DrugBuilder.generateDTOFromEntity(user.get());
+        return DrugBuilder.generateDTOFromEntityWithId(user.get());
     }
 
     public List<DrugDTO> findAllDrugs() {
         List<Drug> drugs = drugRepository.findAll();
 
         return drugs.stream()
-                .map(DrugBuilder::generateDTOFromEntity)
+                .map(DrugBuilder::generateDTOFromEntityWithId)
                 .collect(Collectors.toList());
     }
 
@@ -154,16 +154,10 @@ public class DoctorService {
     }
 
     //Medical Record
-    public MedicalRecordDTO createMedicalRecord(String doctorID, String patientID, List<Drug> drugs, List<IntakeInterval> intakeIntervals, String period) {
-        Optional<Patient> patient = patientRepository.findById(patientID);
-        if (!patient.isPresent()) {
-            throw new ResourceNotFoundException("Patient", "patient id", patientID);
-        }
-        Optional<Doctor> doctor = doctorRepository.findById(doctorID);
-
-        MedicalRecordDTO medicalRecordDTO = new MedicalRecordDTO(patient.get(), doctor.get(), period, drugs, intakeIntervals);
-        medicalRecordRepository.save(MedicalRecordBuilder.generateEntityFromDTO(medicalRecordDTO));
-        return medicalRecordDTO;
+    public Integer insertMedicalRecord(MedicalRecordDTO medicalRecordDTO) {
+        return medicalRecordRepository
+                .save(MedicalRecordBuilder.generateEntityFromDTO(medicalRecordDTO))
+                .getId();
     }
 
     public List<MedicalRecordDTO> getMedicalRecords(String doctorId) {
@@ -177,6 +171,14 @@ public class DoctorService {
                 stream().
                 map(MedicalRecordBuilder::generateDTOFromEntity).
                 collect(Collectors.toList());
+    }
+
+    public List<MedicalRecordDTO> getAllMedicalRecords() {
+        List<MedicalRecord> medicalRecords = medicalRecordRepository.findAll();
+
+        return medicalRecords.stream()
+                .map(MedicalRecordBuilder::generateDTOFromEntity)
+                .collect(Collectors.toList());
     }
 
     //Helper
@@ -227,4 +229,6 @@ public class DoctorService {
         }
         doctorRepository.deleteById(DoctorBuilder.generateEntityFromDTO(doctorDTO).getUsername());
     }
+
+
 }

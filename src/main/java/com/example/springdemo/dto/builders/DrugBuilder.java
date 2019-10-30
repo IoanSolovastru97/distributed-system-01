@@ -18,4 +18,20 @@ public class DrugBuilder {
                 drugDTO.getDescription(),
                 drugDTO.getDrugSideEffect());
     }
+
+    public static DrugDTO generateDTOFromEntityWithId(Drug drug) {
+        return new DrugDTO(
+                drug.getId(),
+                drug.getName(),
+                drug.getDescription(),
+                drug.getDrugSideEffect());
+    }
+
+    public static Drug generateEntityFromDTOWithId(DrugDTO drugDTO) {
+        return new Drug(
+                drugDTO.getId(),
+                drugDTO.getName(),
+                drugDTO.getDescription(),
+                drugDTO.getDrugSideEffect());
+    }
 }

@@ -74,6 +74,7 @@ public class EndpointsWebSecurityConfigurerAdapter extends WebSecurityConfigurer
                 .antMatchers("/healthcare/doctor/**").hasRole(doctorRole).anyRequest().permitAll()
                 .antMatchers("/healthcare/patient/**").hasRole(patientRole).anyRequest().permitAll()
                 .antMatchers("/healthcare/caregiver/**").hasRole(caregiverRole).anyRequest().permitAll()
+                .antMatchers("/healthcare/intake/**").hasAnyRole(doctorRole, patientRole, caregiverRole).anyRequest().permitAll()
                 .antMatchers("/healthcare/login").hasAnyRole(doctorRole, patientRole, caregiverRole).anyRequest().permitAll()
                 .and()
                 .httpBasic();

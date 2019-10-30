@@ -33,7 +33,6 @@ public class PatientController {
 
     @PutMapping(value = "/{username}")
     public String update(@RequestBody PatientDTO userDTO) {
-
         return patientService.update(userDTO);
     }
 

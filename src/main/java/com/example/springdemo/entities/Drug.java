@@ -26,6 +26,13 @@ public class Drug {
         this.drugSideEffect = drugSideEffect;
     }
 
+    public Drug(Integer id, String name, String description, DrugSideEffect drugSideEffect) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.drugSideEffect = drugSideEffect;
+    }
+
     public Drug() {
     }
 

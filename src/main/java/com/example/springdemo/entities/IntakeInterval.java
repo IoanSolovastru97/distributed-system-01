@@ -24,6 +24,12 @@ public class IntakeInterval {
         this.endInterval = endInterval;
     }
 
+    public IntakeInterval(Integer id, String startInterval, String endInterval) {
+        this.id = id;
+        this.startInterval = startInterval;
+        this.endInterval = endInterval;
+    }
+
     public Integer getId() {
         return id;
     }
