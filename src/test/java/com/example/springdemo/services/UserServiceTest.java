@@ -2,7 +2,6 @@ package com.example.springdemo.services;
 
 import com.example.springdemo.SpringDemoApplicationTests;
 import com.example.springdemo.dto.UserDTO;
-import com.example.springdemo.dto.UserViewDTO;
 import com.example.springdemo.entities.helper.Gender;
 import com.example.springdemo.entities.helper.Role;
 import com.example.springdemo.errorhandler.IncorrectParameterException;
@@ -32,8 +31,5 @@ public class UserServiceTest extends SpringDemoApplicationTests {
         userDTO.setBirthday("30/05/2019");
         userDTO.setRole(Role.DOCTOR);
         String id = userService.insert(userDTO);
-        UserViewDTO user2 = userService.findUserById(id);
-        assert(!userDTO.equals(user2));
-
     }
 }

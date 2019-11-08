@@ -66,19 +66,19 @@ public class MedicalRecordDTO {
         this.period = period;
     }
 
-    public List<DrugDTO> getDrugDTOs() {
+    public List<DrugDTO> getDrugs() {
         return drugs;
     }
 
-    public void setDrugDTOs(List<DrugDTO> drugs) {
+    public void setDrugs(List<DrugDTO> drugs) {
         this.drugs = drugs;
     }
 
-    public List<IntakeIntervalDTO> getIntakeIntervalDTOs() {
+    public List<IntakeIntervalDTO> getIntakeIntervals() {
         return intakeIntervals;
     }
 
-    public void setIntakeIntervalDTOs(List<IntakeIntervalDTO> intakeIntervals) {
+    public void setIntakeIntervals(List<IntakeIntervalDTO> intakeIntervals) {
         this.intakeIntervals = intakeIntervals;
     }
 }

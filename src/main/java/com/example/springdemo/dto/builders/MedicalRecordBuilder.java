@@ -12,16 +12,16 @@ public class MedicalRecordBuilder {
                 medicalRecord.getPatient(),
                 medicalRecord.getDoctor(),
                 medicalRecord.getPeriod(),
-                medicalRecord.getDrugs().stream().map(DrugBuilder::generateDTOFromEntity).collect(Collectors.toList()),
-                medicalRecord.getIntakeIntervals().stream().map(IntakeIntervalBuilder::generateDTOFromEntity).collect(Collectors.toList()));
+                medicalRecord.getDrugs().stream().map(DrugBuilder::generateDTOFromEntityWithId).collect(Collectors.toList()),
+                medicalRecord.getIntakeIntervals().stream().map(IntakeIntervalBuilder::generateDTOFromEntityWithId).collect(Collectors.toList()));
     }
 
     public static MedicalRecord generateEntityFromDTO(MedicalRecordDTO medicalRecordDTO) {
         return new MedicalRecord(
                 medicalRecordDTO.getPatient(),
                 medicalRecordDTO.getDoctor(),
-                medicalRecordDTO.getDrugDTOs().stream().map(DrugBuilder::generateEntityFromDTO).collect(Collectors.toList()),
+                medicalRecordDTO.getDrugs().stream().map(DrugBuilder::generateEntityFromDTOWithId).collect(Collectors.toList()),
                 medicalRecordDTO.getPeriod(),
-                medicalRecordDTO.getIntakeIntervalDTOs().stream().map(IntakeIntervalBuilder::generateEntityFromDTO).collect(Collectors.toList()));
+                medicalRecordDTO.getIntakeIntervals().stream().map(IntakeIntervalBuilder::generateEntityFromDTOWithId).collect(Collectors.toList()));
     }
 }

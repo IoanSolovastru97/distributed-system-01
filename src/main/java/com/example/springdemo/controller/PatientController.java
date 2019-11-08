@@ -27,18 +27,18 @@ public class PatientController {
     }
 
     @PostMapping()
-    public String insert(@RequestBody PatientDTO userDTO) {
-        return patientService.insert(userDTO);
+    public String insert(@RequestBody PatientDTO patientDTO) {
+        return patientService.insert(patientDTO);
     }
 
     @PutMapping(value = "/{username}")
-    public String update(@RequestBody PatientDTO userDTO) {
-        return patientService.update(userDTO);
+    public String update(@RequestBody PatientDTO patientDTO) {
+        return patientService.update(patientDTO);
     }
 
     @DeleteMapping()
-    public void delete(@RequestBody PatientDTO userViewDTO) {
-        patientService.delete(userViewDTO);
+    public void delete(@RequestBody PatientDTO patientDTO) {
+        patientService.delete(patientDTO);
     }
 
     @GetMapping(value = "/{username}/medicalrecord")

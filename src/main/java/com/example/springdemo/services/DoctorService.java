@@ -149,14 +149,15 @@ public class DoctorService {
         return drugRepository.save(DrugBuilder.generateEntityFromDTO(drugDTO)).getId();
     }
 
-    public void deleteDrug(DrugDTO userViewDTO) {
-        this.drugRepository.deleteById(userViewDTO.getId());
+    public void deleteDrug(DrugDTO drugDTO) {
+        this.drugRepository.deleteById(drugDTO.getId());
     }
 
     //Medical Record
     public Integer insertMedicalRecord(MedicalRecordDTO medicalRecordDTO) {
+        MedicalRecord medicalRecord = MedicalRecordBuilder.generateEntityFromDTO(medicalRecordDTO);
         return medicalRecordRepository
-                .save(MedicalRecordBuilder.generateEntityFromDTO(medicalRecordDTO))
+                .save(medicalRecord)
                 .getId();
     }
 

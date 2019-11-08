@@ -17,6 +17,9 @@ public class IntakeIntervalDTO {
         this.endInterval = endInterval;
     }
 
+    public IntakeIntervalDTO() {
+    }
+
     public Integer getId() {
         return id;
     }

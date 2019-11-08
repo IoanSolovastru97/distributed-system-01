@@ -2,7 +2,7 @@ package com.example.springdemo.controller;
 
 
 import com.example.springdemo.dto.UserDTO;
-import com.example.springdemo.dto.UserViewDTO;
+import com.example.springdemo.dto.UserDTO;
 import com.example.springdemo.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -18,12 +18,12 @@ public class UserController {
     private UserService userService;
 
     @GetMapping(value = "/{username}")
-    public UserViewDTO findById(@PathVariable("username") String username){
+    public UserDTO findById(@PathVariable("username") String username){
         return userService.findUserById(username);
     }
 
     @GetMapping()
-    public List<UserViewDTO> findAll(){
+    public List<UserDTO> findAll(){
         return userService.findAll();
     }
 
@@ -38,7 +38,7 @@ public class UserController {
     }
 
     @DeleteMapping()
-    public void delete(@RequestBody UserViewDTO userViewDTO){
-        userService.delete(userViewDTO);
+    public void delete(@RequestBody UserDTO userDTO){
+        userService.delete(userDTO);
     }
 }

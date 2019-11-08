@@ -17,7 +17,8 @@ public class IntakeInterval {
     @Column(name = "end_interval")
     private String endInterval;
 
-    public IntakeInterval(){}
+    public IntakeInterval() {
+    }
 
     public IntakeInterval(String startInterval, String endInterval) {
         this.startInterval = startInterval;

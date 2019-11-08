@@ -9,14 +9,14 @@ public class DrugBuilder {
         return new DrugDTO(
                 drug.getName(),
                 drug.getDescription(),
-                drug.getDrugSideEffect());
+                DrugSideEffectBuilder.generateDTOFromEntity(drug.getDrugSideEffect()));
     }
 
     public static Drug generateEntityFromDTO(DrugDTO drugDTO) {
         return new Drug(
                 drugDTO.getName(),
                 drugDTO.getDescription(),
-                drugDTO.getDrugSideEffect());
+                DrugSideEffectBuilder.generateEntityFromDTO(drugDTO.getDrugSideEffect()));
     }
 
     public static DrugDTO generateDTOFromEntityWithId(Drug drug) {
@@ -24,7 +24,7 @@ public class DrugBuilder {
                 drug.getId(),
                 drug.getName(),
                 drug.getDescription(),
-                drug.getDrugSideEffect());
+                DrugSideEffectBuilder.generateDTOFromEntity(drug.getDrugSideEffect()));
     }
 
     public static Drug generateEntityFromDTOWithId(DrugDTO drugDTO) {
@@ -32,6 +32,6 @@ public class DrugBuilder {
                 drugDTO.getId(),
                 drugDTO.getName(),
                 drugDTO.getDescription(),
-                drugDTO.getDrugSideEffect());
+                DrugSideEffectBuilder.generateEntityFromDTO(drugDTO.getDrugSideEffect()));
     }
 }
