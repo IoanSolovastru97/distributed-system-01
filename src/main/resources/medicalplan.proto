@@ -1,0 +1,47 @@
+syntax = "proto3";
+
+option java_package = "com.example.springdemo.grpc";
+
+service medicalPlan {
+
+    rpc getMedicalPlan (PatientUsername) returns (MedicalRecord);
+    rpc informServer (MedicationName) returns (Empty);
+}
+
+// getMedicationPlan
+message PatientUsername {
+    string patientUsername = 1;
+}
+
+message MedicalRecord {
+    int32 id = 1;
+    repeated Drug drug = 2;
+    repeated IntakeInterval intakeInterval = 3;
+}
+
+message Drug {
+    int32 id = 1;
+    string name = 2;
+    string description = 3;
+    DrugSideEffect drugSideEffect = 4;
+}
+
+message DrugSideEffect {
+    int32 id = 1;
+    string description = 2;
+}
+
+message IntakeInterval {
+    int32 id = 1;
+    string startInterval = 2;
+    string endInterval = 3;
+}
+
+// informServer
+message MedicationName {
+    string medicationName = 1;
+}
+
+message Empty {
+
+}

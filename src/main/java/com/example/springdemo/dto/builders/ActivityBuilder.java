@@ -20,4 +20,22 @@ public class ActivityBuilder {
                 activityDTO.getStartActivity(),
                 activityDTO.getEndActivity());
     }
+
+    public static ActivityDTO generateDTOFromEntityWithId(Activity activity) {
+        return new ActivityDTO(
+                activity.getId(),
+                activity.getPatientUsername(),
+                activity.getActivity(),
+                activity.getStartActivity(),
+                activity.getEndActivity());
+    }
+
+    public static Activity generateEntityFromDTOWithId(ActivityDTO activityDTO) {
+        return new Activity(
+                activityDTO.getId(),
+                activityDTO.getPatientUsername(),
+                activityDTO.getActivity(),
+                activityDTO.getStartActivity(),
+                activityDTO.getEndActivity());
+    }
 }

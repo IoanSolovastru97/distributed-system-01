@@ -1,0 +1,47 @@
+//syntax = "proto3";
+//
+//option java_package = "com.example.springdemo.grpc";
+//
+//service patientNotification {
+//    //stream -> bidirectional communication, list
+//    rpc sendMessage (stream SendMessage) returns (stream ResponseMessage);
+//    rpc getMedicalRecord (stream SendInfoForMedicalRecord) returns (stream GetMedicalRecord);
+//}
+//
+//message SendMessage {
+//    string sendMessage = 1;
+//}
+//
+//message ResponseMessage {
+//    string responseMessage = 1;
+//}
+//
+//message SendInfoForMedicalRecord {
+//    string patientId = 1;
+//}
+//
+//message GetMedicalRecord {
+//    int32 id = 1;
+//    repeated Drug drug = 2;
+//    repeated IntakeInterval intakeInterval = 3;
+//
+//}
+//
+//message Drug {
+//    int32 id = 1;
+//    string name = 2;
+//    string description = 3;
+//    DrugSideEffect drugSideEffect = 4;
+//
+//}
+//
+//message DrugSideEffect {
+//    int32 id = 1;
+//    string description = 2;
+//}
+//
+//message IntakeInterval {
+//    int32 id = 1;
+//    string startInterval = 2;
+//    string endInterval = 3;
+//}

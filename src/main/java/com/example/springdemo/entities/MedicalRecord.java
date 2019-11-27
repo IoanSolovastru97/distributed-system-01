@@ -1,5 +1,7 @@
 package com.example.springdemo.entities;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,9 +16,11 @@ public class MedicalRecord {
     private Integer id ;
 
     @ManyToOne
+    @JsonManagedReference
     private Patient patient;
 
     @ManyToOne
+    @JsonManagedReference
     private Doctor doctor;
 
     @Column(name = "period")
