@@ -1,7 +1,11 @@
 package com.example.springdemo.dto.builders;
 
 import com.example.springdemo.dto.IntakeIntervalDTO;
+import com.example.springdemo.dto.MedicalRecordDTO;
 import com.example.springdemo.entities.IntakeInterval;
+import com.example.springdemo.soap.Interval;
+
+import java.math.BigDecimal;
 
 public class IntakeIntervalBuilder {
 
@@ -30,4 +34,13 @@ public class IntakeIntervalBuilder {
                 intakeIntervalDTO.getStartInterval(),
                 intakeIntervalDTO.getEndInterval());
     }
+
+    public static com.example.springdemo.soap.Interval generateDTOToSoap(IntakeIntervalDTO intakeIntervalDTO) {
+        Interval interval = new Interval();
+        interval.setId(BigDecimal.valueOf(intakeIntervalDTO.getId()));
+        interval.setStartInterval(intakeIntervalDTO.getStartInterval());
+        interval.setEndInterval(intakeIntervalDTO.getEndInterval());
+        return interval;
+    }
+
 }

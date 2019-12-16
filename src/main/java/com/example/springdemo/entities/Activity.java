@@ -11,7 +11,7 @@ public class Activity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
-    private Integer id ;
+    private Integer id;
 
     @Column(name = "patient_username")
     private String patientUsername;
@@ -24,6 +24,9 @@ public class Activity {
 
     @Column(name = "end_activity")
     private String endActivity;
+
+    @Column(name = "recommendation")
+    private String recommendation;
 
     //JsonProperty is needed for deserialization, alternative of using empty Constructor and non final fields
     public Activity(@JsonProperty("patientUsername") String patientUsername,
@@ -44,7 +47,24 @@ public class Activity {
         this.endActivity = endActivity;
     }
 
+    public Activity(Integer id, String patientUsername, String activity, String startActivity, String endActivity, String recommendation) {
+        this.id = id;
+        this.patientUsername = patientUsername;
+        this.activity = activity;
+        this.startActivity = startActivity;
+        this.endActivity = endActivity;
+        this.recommendation = recommendation;
+    }
+
     public Activity() {
+    }
+
+    public String getRecommendation() {
+        return recommendation;
+    }
+
+    public void setRecommendation(String recommendation) {
+        this.recommendation = recommendation;
     }
 
     public Integer getId() {

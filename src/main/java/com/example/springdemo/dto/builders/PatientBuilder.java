@@ -5,6 +5,7 @@ import com.example.springdemo.dto.PatientDTO;
 import com.example.springdemo.entities.MedicalRecord;
 import com.example.springdemo.entities.Patient;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.stream.Collectors;
 
@@ -36,5 +37,17 @@ public class PatientBuilder {
                 patientDTO.getBirthday(),
                 patientDTO.getAddress(),
                 patientDTO.getMedicalRecords().stream().map(MedicalRecordBuilder::generateEntityFromDTO).collect(Collectors.toList()));
+    }
+
+    public static com.example.springdemo.soap.Patient generateDTOToSoap(PatientDTO patientDTO) {
+        com.example.springdemo.soap.Patient patient = new com.example.springdemo.soap.Patient();
+        patient.setAddress(patientDTO.getAddress());
+        patient.setBirthday(patientDTO.getBirthday());
+        patient.setGender(patientDTO.getGender().toString());
+        patient.setName(patientDTO.getName());
+        patient.setRole(patientDTO.getRole().toString());
+        patient.setUsername(patientDTO.getUsername());
+        patient.setPassword(patientDTO.getPassword());
+        return patient;
     }
 }

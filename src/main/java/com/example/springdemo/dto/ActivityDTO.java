@@ -2,11 +2,12 @@ package com.example.springdemo.dto;
 
 public class ActivityDTO {
 
-    private Integer id ;
+    private Integer id;
     private String patientUsername;
     private String activity;
     private String startActivity;
     private String endActivity;
+    private String recommendation;
 
     public ActivityDTO(String patientUsername, String activity, String startActivity, String endActivity) {
         this.patientUsername = patientUsername;
@@ -23,7 +24,24 @@ public class ActivityDTO {
         this.endActivity = endActivity;
     }
 
+    public ActivityDTO(Integer id, String patientUsername, String activity, String startActivity, String endActivity, String recommendation) {
+        this.id = id;
+        this.patientUsername = patientUsername;
+        this.activity = activity;
+        this.startActivity = startActivity;
+        this.endActivity = endActivity;
+        this.recommendation = recommendation;
+    }
+
     public ActivityDTO() {
+    }
+
+    public String getRecommendation() {
+        return recommendation;
+    }
+
+    public void setRecommendation(String recommendation) {
+        this.recommendation = recommendation;
     }
 
     public Integer getId() {

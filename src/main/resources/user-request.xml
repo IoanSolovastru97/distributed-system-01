@@ -1,0 +1,10 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+                  xmlns:us="http://example.com/springdemo/soap">
+    <soapenv:Header/>
+    <soapenv:Body>
+        <us:getUserRequest>
+            <us:username>ioana@gmail.com</us:username>
+            <us:password>ioana</us:password>
+        </us:getUserRequest>
+    </soapenv:Body>
+</soapenv:Envelope>
