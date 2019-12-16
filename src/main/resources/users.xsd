@@ -1,0 +1,168 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:tns="http://example.com/springdemo/soap"
+           targetNamespace="http://example.com/springdemo/soap"
+           elementFormDefault="qualified">
+
+    <xs:element name="getUserRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="username" type="xs:string"/>
+                <xs:element name="password" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getUserResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="user" type="tns:user"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="user">
+        <xs:sequence>
+            <xs:element name="username" type="xs:string"/>
+            <xs:element name="password" type="xs:string"/>
+            <xs:element name="name" type="xs:string"/>
+            <xs:element name="gender" type="xs:string"/>
+            <xs:element name="birthday" type="xs:string"/>
+            <xs:element name="address" type="xs:string"/>
+            <xs:element name="role" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!--Get doctorDTO-->
+    <xs:element name="getDoctorRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="username" type="xs:string"/>
+                <xs:element name="password" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getDoctorResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="doctor" type="tns:doctor"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="doctor">
+        <xs:sequence>
+            <xs:element name="username" type="xs:string"/>
+            <xs:element name="password" type="xs:string"/>
+            <xs:element name="name" type="xs:string"/>
+            <xs:element name="gender" type="xs:string"/>
+            <xs:element name="birthday" type="xs:string"/>
+            <xs:element name="address" type="xs:string"/>
+            <xs:element name="role" type="xs:string"/>
+            <xs:sequence minOccurs="0" maxOccurs="unbounded">
+                <xs:element name="patients" type="tns:patient"/>
+            </xs:sequence>
+            <xs:sequence minOccurs="0" maxOccurs="unbounded">
+                <xs:element name="medicalrecords" type="tns:medicalrecord"/>
+            </xs:sequence>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="patient">
+        <xs:sequence>
+            <xs:element name="username" type="xs:string"/>
+            <xs:element name="password" type="xs:string"/>
+            <xs:element name="name" type="xs:string"/>
+            <xs:element name="gender" type="xs:string"/>
+            <xs:element name="birthday" type="xs:string"/>
+            <xs:element name="address" type="xs:string"/>
+            <xs:element name="role" type="xs:string"/>
+            <xs:sequence minOccurs="0" maxOccurs="unbounded">
+                <xs:element name="medicalrecords" type="tns:medicalrecord"/>
+            </xs:sequence>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:element name="getMedicalrecordRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="username" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getMedicalrecordResponse">
+        <xs:complexType>
+            <xs:sequence minOccurs="0" maxOccurs="unbounded">
+                <xs:element name="medicalrecord" type="tns:medicalrecord"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="medicalrecord">
+        <xs:sequence>
+            <xs:element name="id" type="xs:decimal"/>
+            <xs:element name="patient" type="tns:patient"/>
+            <xs:element name="doctor" type="tns:doctor"/>
+            <xs:element name="period" type="xs:string"/>
+            <xs:sequence minOccurs="0" maxOccurs="unbounded">
+                <xs:element name="drugs" type="tns:drug"/>
+            </xs:sequence>
+            <xs:sequence minOccurs="0" maxOccurs="unbounded">
+                <xs:element name="intervals" type="tns:interval"/>
+            </xs:sequence>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="drug">
+        <xs:sequence>
+            <xs:element name="id" type="xs:decimal"/>
+            <xs:element name="name" type="xs:string"/>
+            <xs:element name="description" type="xs:string"/>
+            <xs:element name="drugSideEffect" type="tns:drugSideEffect"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="drugSideEffect">
+        <xs:sequence>
+            <xs:element name="id" type="xs:decimal"/>
+            <xs:element name="description" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="interval">
+        <xs:sequence>
+            <xs:element name="id" type="xs:decimal"/>
+            <xs:element name="startInterval" type="xs:string"/>
+            <xs:element name="endInterval" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:element name="getActivitiesRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="username" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getActivitiesResponse">
+        <xs:complexType>
+            <xs:sequence minOccurs="0" maxOccurs="unbounded">
+                <xs:element name="activity" type="tns:activity"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="activity">
+        <xs:sequence>
+            <xs:element name="id" type="xs:decimal"/>
+            <xs:element name="activity" type="xs:string"/>
+            <xs:element name="startActivity" type="xs:string"/>
+            <xs:element name="endActivity" type="xs:string"/>
+            <xs:element name="patientUsername" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+
+</xs:schema>

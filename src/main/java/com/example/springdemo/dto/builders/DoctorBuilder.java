@@ -3,6 +3,7 @@ package com.example.springdemo.dto.builders;
 import com.example.springdemo.dto.DoctorDTO;
 import com.example.springdemo.dto.MedicalRecordDTO;
 import com.example.springdemo.dto.PatientDTO;
+import com.example.springdemo.dto.UserDTO;
 import com.example.springdemo.entities.Doctor;
 import com.example.springdemo.entities.MedicalRecord;
 import com.example.springdemo.entities.Patient;
@@ -44,5 +45,25 @@ public class DoctorBuilder {
                 doctorDTO.getAddress(),
                 doctorDTO.getPatients().stream().map(PatientBuilder::generateEntityFromDTO).collect(Collectors.toList()),
                 doctorDTO.getMedicalRecords().stream().map(MedicalRecordBuilder::generateEntityFromDTO).collect(Collectors.toList()));
+    }
+
+    public static com.example.springdemo.soap.Doctor generateDTOToSoap(DoctorDTO doctorDTO) {
+        com.example.springdemo.soap.Doctor doctor = new com.example.springdemo.soap.Doctor();
+        doctor.setUsername(doctorDTO.getUsername());
+        doctor.setPassword(doctorDTO.getPassword());
+        doctor.setAddress(doctorDTO.getAddress());
+        doctor.setBirthday(doctorDTO.getBirthday());
+        doctor.setGender(doctorDTO.getGender().toString());
+        doctor.setName(doctorDTO.getName());
+        doctor.setRole(doctorDTO.getRole().toString());
+        doctor.setRole(doctorDTO.getRole().toString());
+        doctor.getMedicalrecords().addAll(doctorDTO.getMedicalRecords()
+                .stream()
+                .map(MedicalRecordBuilder::generateDTOToSoap)
+                .collect(Collectors.toList()));
+        doctor.getPatients().addAll(doctorDTO.getPatients()
+                .stream().map(PatientBuilder::generateDTOToSoap)
+                .collect(Collectors.toList()));
+        return doctor;
     }
 }
